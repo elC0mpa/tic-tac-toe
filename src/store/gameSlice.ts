@@ -3,6 +3,7 @@ import { CellStatusChangePayload, CellType } from "../types";
 
 interface GameState {
   cellsState: CellType[][];
+  actualTurn: CellType;
 }
 
 const initialState: GameState = {
@@ -11,6 +12,7 @@ const initialState: GameState = {
     [undefined, undefined, undefined],
     [undefined, undefined, undefined],
   ],
+  actualTurn: "noughts",
 };
 
 export const gameSlice = createSlice({
@@ -22,8 +24,9 @@ export const gameSlice = createSlice({
       action: PayloadAction<CellStatusChangePayload>
     ) => {
       const { payload } = action;
-      const { row, column, type } = payload;
-      state.cellsState[row][column] = type;
+      const { row, column } = payload;
+      state.cellsState[row][column] = state.actualTurn;
+      state.actualTurn = state.actualTurn === "noughts" ? "crosses" : "noughts";
     },
   },
 });

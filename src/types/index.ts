@@ -1,6 +1,5 @@
-export type CellType = "tic" | "tac" | undefined;
+export type CellType = "noughts" | "crosses" | undefined;
 export type CellStatusChangePayload = {
-  type: CellType;
   row: number;
   column: number;
 };
