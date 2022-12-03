@@ -1,14 +1,14 @@
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { changeCellStatus } from "../store/gameSlice";
-import { BsCircle, BsX } from "react-icons/bs";
-import { StyledCell } from "../styled";
+import { StyledCell, StyledCrossIcon, StyledNoughtsIcon } from "../styled";
 
 type CellProps = {
   row: number;
   column: number;
+  winnerCell: boolean;
 };
 
-const Cell = ({ row, column }: CellProps) => {
+const Cell = ({ row, column, winnerCell }: CellProps) => {
   const cellStatus = useAppSelector(
     (state) => state.game.cellsState[row][column]
   );
@@ -19,9 +19,17 @@ const Cell = ({ row, column }: CellProps) => {
   return (
     <StyledCell onClick={cellClicked}>
       {cellStatus === undefined ? null : cellStatus === "noughts" ? (
-        <BsCircle size={120} color="white" />
+        <StyledNoughtsIcon
+          size={120}
+          className={winnerCell ? "flash" : ""}
+          color="white"
+        />
       ) : (
-        <BsX size={120} color="white" />
+        <StyledCrossIcon
+          size={120}
+          className={winnerCell ? "flash" : ""}
+          color="white"
+        />
       )}
     </StyledCell>
   );

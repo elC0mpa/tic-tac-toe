@@ -6,11 +6,12 @@ import { CellType } from "../types";
 import Cell from "./Cell";
 
 const TicTacToe = () => {
-  const cells = useAppSelector((state) => state.game.cellsState);
   const dispatch = useAppDispatch();
+  const cells = useAppSelector((state) => state.game.cellsState);
+  const winninigCells = useAppSelector((state) => state.game.winningCells);
   useEffect(() => {
     dispatch(checkIfGameIsOver());
-  }, cells);
+  }, [cells]);
   return (
     <StyledGeneralContainer>
       <StyledCellsContainer>
@@ -18,6 +19,11 @@ const TicTacToe = () => {
           return row.map((column: CellType, columnIndex: number) => {
             return (
               <Cell
+                winnerCell={Boolean(
+                  winninigCells?.some(
+                    (cell) => cell === rowIndex * 3 + columnIndex
+                  )
+                )}
                 key={`row-${rowIndex} column-${columnIndex}`}
                 row={rowIndex}
                 column={columnIndex}

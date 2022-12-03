@@ -1,4 +1,12 @@
+import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
+import { BsCircle, BsX } from "react-icons/bs";
+
+const FlashAnimation = keyframes`
+  0% {opacity: 1}
+  50% {opacity: 0}
+  100% {opacity: 1}
+`;
 
 export const StyledGeneralContainer = styled.div`
   height: 100vh;
@@ -22,4 +30,20 @@ export const StyledCell = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const StyledNoughtsIcon = styled(BsCircle)`
+  &.flash {
+    animation-name: ${FlashAnimation};
+    animation-duration: 0.5s;
+    animation-iteration-count: 3;
+  }
+`;
+
+export const StyledCrossIcon = styled(BsX)`
+  &.flash {
+    animation-name: ${FlashAnimation};
+    animation-duration: 2s;
+    animation-iteration-count: 3;
+  }
 `;

@@ -4,7 +4,7 @@ import { CellStatusChangePayload, CellType } from "../types";
 interface GameState {
   cellsState: CellType[][];
   actualTurn: CellType;
-  winningCells?: number[];
+  winningCells?: number[] | undefined[];
   winnerTurn: CellType;
 }
 
@@ -15,7 +15,7 @@ const initialState: GameState = {
     [undefined, undefined, undefined],
   ],
   actualTurn: "noughts",
-  winningCells: [0, 0, 0],
+  winningCells: [undefined, undefined, undefined],
   winnerTurn: undefined,
 };
 
