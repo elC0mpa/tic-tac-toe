@@ -1,10 +1,16 @@
-import { useAppSelector } from "../hooks";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../hooks";
+import { checkIfGameIsOver } from "../store/gameSlice";
 import { StyledCellsContainer, StyledGeneralContainer } from "../styled";
 import { CellType } from "../types";
 import Cell from "./Cell";
 
 const TicTacToe = () => {
   const cells = useAppSelector((state) => state.game.cellsState);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(checkIfGameIsOver());
+  }, cells);
   return (
     <StyledGeneralContainer>
       <StyledCellsContainer>
