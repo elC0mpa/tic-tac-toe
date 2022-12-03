@@ -19,9 +19,9 @@ const Cell = ({ row, column }: CellProps) => {
   return (
     <StyledCell onClick={cellClicked}>
       {cellStatus === undefined ? null : cellStatus === "noughts" ? (
-        <BsCircle size={40} />
+        <BsCircle size={120} color="white" />
       ) : (
-        <BsX size={40} />
+        <BsX size={120} color="white" />
       )}
     </StyledCell>
   );
