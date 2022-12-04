@@ -18,8 +18,10 @@ export const StyledGeneralContainer = styled.div`
   height: 100vh;
   background: black;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: stretch;
+  justify-content: center;
+  gap: 30px;
 `;
 
 export const StyledCellsContainer = styled.div`
@@ -54,7 +56,33 @@ export const StyledNoughtsIcon = styled(BsCircle)`
 export const StyledCrossIcon = styled(BsX)`
   &.flash {
     animation-name: ${FlashAnimation};
-    animation-duration: 2s;
+    animation-duration: 0.5s;
     animation-iteration-count: 3;
   }
+`;
+
+export const StyledStatsContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 600px;
+  width: 80%;
+`;
+
+export const StyledStatsItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+`;
+
+export const StyledStatsItemLabel = styled.span`
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+`;
+
+export const StyledStatsItemValue = styled.span`
+  font-size: 80px;
+  font-weight: 400;
 `;
