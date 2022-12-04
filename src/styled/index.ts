@@ -74,6 +74,11 @@ export const StyledStatsItem = styled.div`
   flex-direction: column;
   align-items: center;
   color: white;
+  opacity: 0.6;
+  transition: opacity 1s;
+  &.is-active {
+    opacity: 1;
+  }
 `;
 
 export const StyledStatsItemLabel = styled.span`

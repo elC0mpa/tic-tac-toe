@@ -7,11 +7,12 @@ import {
 type Props = {
   label: string;
   value: string;
+  isActive: boolean;
 };
 
-const StatsItem = ({ label, value }: Props) => {
+const StatsItem = ({ label, value, isActive }: Props) => {
   return (
-    <StyledStatsItem>
+    <StyledStatsItem className={isActive ? "is-active" : ""}>
       <StyledStatsItemLabel>{label}</StyledStatsItemLabel>
       <StyledStatsItemValue>{value}</StyledStatsItemValue>
     </StyledStatsItem>
