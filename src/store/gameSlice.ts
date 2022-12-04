@@ -65,9 +65,16 @@ export const gameSlice = createSlice({
         }
       });
     },
+    resetGameData: (state) => {
+      state.actualTurn = initialState.actualTurn;
+      state.cellsState = initialState.cellsState;
+      state.winnerTurn = initialState.winnerTurn;
+      state.winningCells = initialState.winningCells;
+    },
   },
 });
 
-export const { changeCellStatus, checkIfGameIsOver } = gameSlice.actions;
+export const { changeCellStatus, checkIfGameIsOver, resetGameData } =
+  gameSlice.actions;
 
 export default gameSlice.reducer;

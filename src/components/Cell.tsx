@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../hooks";
-import { changeCellStatus } from "../store/gameSlice";
+import { changeCellStatus, resetGameData } from "../store/gameSlice";
 import { StyledCell, StyledCrossIcon, StyledNoughtsIcon } from "../styled";
 
 type CellProps = {
@@ -12,9 +12,12 @@ const Cell = ({ row, column, winnerCell }: CellProps) => {
   const cellStatus = useAppSelector(
     (state) => state.game.cellsState[row][column]
   );
+  const winnerTurn = useAppSelector((state) => state.game.winnerTurn);
   const dispatch = useAppDispatch();
   const cellClicked = () => {
-    dispatch(changeCellStatus({ row, column }));
+    winnerTurn
+      ? dispatch(resetGameData())
+      : dispatch(changeCellStatus({ row, column }));
   };
   return (
     <StyledCell onClick={cellClicked}>
