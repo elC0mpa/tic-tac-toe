@@ -5,7 +5,7 @@ interface GameState {
   cellsState: CellType[][];
   actualTurn: CellType;
   winningCells?: number[] | undefined[];
-  winnerTurn: CellType;
+  winnerTurn: CellType | "tie";
 }
 
 const initialState: GameState = {
@@ -61,9 +61,15 @@ export const gameSlice = createSlice({
           state.winningCells = winningConditions[index];
           state.winnerTurn =
             state.actualTurn === "noughts" ? "crosses" : "noughts";
-          console.log("game over: ", state.winnerTurn, state.winningCells);
+          return;
         }
       });
+      const isTie = cellsState.every((cellArray) =>
+        cellArray.every((cell) => cell !== undefined)
+      );
+      if (isTie) {
+        state.winnerTurn = "tie";
+      }
     },
     resetGameData: (state) => {
       state.actualTurn = initialState.actualTurn;

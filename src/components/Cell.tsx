@@ -20,7 +20,10 @@ const Cell = ({ row, column, winnerCell }: CellProps) => {
       : dispatch(changeCellStatus({ row, column }));
   };
   return (
-    <StyledCell onClick={cellClicked}>
+    <StyledCell
+      onClick={cellClicked}
+      className={winnerTurn === "tie" ? "flash" : ""}
+    >
       {cellStatus === undefined ? null : cellStatus === "noughts" ? (
         <StyledNoughtsIcon
           size={120}

@@ -8,6 +8,12 @@ const FlashAnimation = keyframes`
   100% {opacity: 1}
 `;
 
+const FlashBorderAnimation = keyframes`
+  0% {border: 1px dashed white;}
+  50% {border: 1px dashed black;}
+  100% {border: 1px dashed white;}
+`;
+
 export const StyledGeneralContainer = styled.div`
   height: 100vh;
   background: black;
@@ -30,6 +36,11 @@ export const StyledCell = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  &.flash {
+    animation-name: ${FlashBorderAnimation};
+    animation-duration: 0.5s;
+    animation-iteration-count: 3;
+  }
 `;
 
 export const StyledNoughtsIcon = styled(BsCircle)`
