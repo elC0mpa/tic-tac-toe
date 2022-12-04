@@ -64,6 +64,7 @@ export const gameSlice = createSlice({
           return;
         }
       });
+      if (state.winnerTurn) return;
       const isTie = cellsState.every((cellArray) =>
         cellArray.every((cell) => cell !== undefined)
       );
