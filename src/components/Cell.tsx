@@ -1,4 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../hooks";
+import { useWidth } from "../hooks/useWidth";
 import { changeCellStatus, resetGameData } from "../store/gameSlice";
 import { StyledCell, StyledCrossIcon, StyledNoughtsIcon } from "../styled";
 
@@ -19,6 +20,8 @@ const Cell = ({ row, column, winnerCell }: CellProps) => {
       ? dispatch(resetGameData())
       : dispatch(changeCellStatus({ row, column }));
   };
+  const width = useWidth();
+
   return (
     <StyledCell
       onClick={cellClicked}
@@ -26,13 +29,13 @@ const Cell = ({ row, column, winnerCell }: CellProps) => {
     >
       {cellStatus === undefined ? null : cellStatus === "noughts" ? (
         <StyledNoughtsIcon
-          size={120}
+          size={width < 600 ? 60 : 120}
           className={winnerCell ? "flash" : ""}
           color="white"
         />
       ) : (
         <StyledCrossIcon
-          size={120}
+          size={width < 600 ? 90 : 120}
           className={winnerCell ? "flash" : ""}
           color="white"
         />
