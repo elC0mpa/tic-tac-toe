@@ -27,9 +27,12 @@ export const StyledGeneralContainer = styled.div`
 export const StyledCellsContainer = styled.div`
   margin: 0 auto;
   max-width: 600px;
-  width: 80%;
+  width: 90%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr) minmax(
+      100px,
+      1fr
+    );
 `;
 
 export const StyledCell = styled.div`
@@ -38,6 +41,12 @@ export const StyledCell = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 600px) {
+    height: 120px;
+  }
+  @media (max-width: 430px) {
+    height: 100px;
+  }
   &.flash {
     animation-name: ${FlashBorderAnimation};
     animation-duration: 0.5s;
